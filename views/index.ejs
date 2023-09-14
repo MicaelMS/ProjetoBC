@@ -23,25 +23,24 @@
                 <div class="col-md-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="<%= obj.imagem %>" class="card-img-top" alt="Imagem do Artigo">
+                            <div class="row justify-content-between">
+                                <div class="col-md-4" style="height: 50px;">
+                                    <img style="height: 230%;" src=<%= obj.imagem %> class="card-img-top" alt="Imagem do Artigo">
+                                    <!-- <img src="/imagens/titulo01.jpg" class="card-img-top" alt="Imagem do Artigo"> -->
                                 </div>
                                 <div class="col-md-8">
                                     <h2 class="card-title"><%= obj.kb_title %></h2>
-                                    <div style="-ms-flex-align: center;">
-                                        <div class="ml-4">Palavras-chave: <%= obj.kb_keywords %></div>
-                                        <div class="ml-4">Email do Autor: <%= obj.kb_author_email %></div>
+                                    <div style="-ms-flex-align: start;">
+                                        <div class="ml-4"><%= obj.kb_author_email %> <%= obj.kb_published_date %></div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                        </div>
                                         <div>
                                             <span class="badge text-bg-danger" id="likes">
                                                 <i class="bi bi-heart"></i>Curtidas: <%= obj.kb_liked_count %>
                                             </span>
                                             <a href="#" class="btn btn-outline-primary btn-sm ml-2">Leia mais</a>
-                                        </div>
-                                        <div>
-                                            <span>Publicação: <%= obj.kb_published_date %></span>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +55,7 @@
 
     <footer class="bg-dark text-light text-center py-3">
         <div class="container">
-            &copy; 2023 Meu Site
+            &copy; Base de Conhecimento 2023
         </div>
     </footer>
 

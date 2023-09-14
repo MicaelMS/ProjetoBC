@@ -18,9 +18,15 @@ const articles = JSON.parse(articlesJSON);
 const usersJSON = fs.readFileSync(usersFilePath, 'utf8');
 const users = JSON.parse(usersJSON);
 
-// Rota para renderizar o arquivo index.ejs
+// Classificar os artigos por kb_liked_count em ordem decrescente
+articles.sort((a, b) => parseInt(b.kb_liked_count) - parseInt(a.kb_liked_count));
+
+// Pegar os dois primeiros artigos após a classificação
+const topArticles = articles.slice(0, 10);
+
+// Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
 app.get('/', function (req, res) {
-    res.render('index', {articles});
+    res.render('index', { articles: topArticles });
 });
 
 app.get('/login', (req, res) => {
