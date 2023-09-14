@@ -29,6 +29,22 @@ app.get('/', function (req, res) {
     res.render('index', { articles: topArticles });
 });
 
+app.get('/filter', function (req, res) {
+    const keywordToFilter = req.query.keyword; // Obter a palavra-chave da consulta
+
+    // Filtrar os artigos com base na palavra-chave
+    const filteredArticles = articles.filter(article => article.kb_keywords.includes(keywordToFilter));
+
+    // Classificar os artigos filtrados por kb_liked_count em ordem decrescente
+    filteredArticles.sort((a, b) => parseInt(b.kb_liked_count) - parseInt(a.kb_liked_count));
+
+    // Pegar os dois primeiros artigos após a classificação
+    const topArticles = filteredArticles.slice(0, 10);
+
+    // Renderizar a página de resultados com os artigos filtrados
+    res.render('index', { articles: topArticles, keyword: keywordToFilter });
+});
+
 app.get('/login', (req, res) => {
     res.render("login");
   });
