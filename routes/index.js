@@ -4,7 +4,7 @@ const app = express();
 const ejs = require('ejs');
 const path = require('path');
 const fs = require('fs');
-const articlesJS = require('./articles');
+const { sendArticles, sendArticlesKey } = require('./articles'); // Importe as funções diretamente
 
 // Configurar EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
@@ -14,11 +14,11 @@ router.use(express.json())
 
 // Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
 app.get('/', function (req, res) {
-    articlesJS.sendArticles(req, res);
+    sendArticles(req, res);
 });
 
 app.get('/filter', function (req, res) {
-    articlesJS.sendArticlesKey(req, res);
+    sendArticlesKey(req, res);
 });
 
 app.get('/login', (req, res) => {

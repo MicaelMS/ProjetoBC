@@ -40,4 +40,4 @@ function sendArticlesKey(req, res) {
     res.render('index', { articles: topArticles, keyword: keywordToFilter });
 }
 
-module.exports = { router: sendArticles, sendArticlesKey };
+module.exports = { sendArticles, sendArticlesKey };
