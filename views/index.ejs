@@ -10,7 +10,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justi   tent-between">
         <div class="container">
-            <a class="navbar-brand text-light" href="#">Home</a>
+            <a class="navbar-brand text-light" href="/">Home</a>
             <form class="form-inline ml-auto" action="/filter" method="GET">
                 <div class="row justify-content-between">
                     <div class="form-group col-md-8">
@@ -21,7 +21,12 @@
                     </div>
                 </div>
             </form> 
-            <a href="#" class="btn btn-primary text-light ml-auto">Logar</a>
+            <form class="form-inline ml-auto" action="/login" method="GET">
+                <form action="/login" method="POST">
+                    <button type="submit" class="btn btn-primary text-light ml-auto">Logar</button>
+                </form>
+                <a href="/cadastra_usuario" class="btn btn-primary">Cadastrar Usuário</a>
+            </form>
         </div>
         </div>
     </nav>

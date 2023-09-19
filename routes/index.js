@@ -5,12 +5,16 @@ const ejs = require('ejs');
 const path = require('path');
 const fs = require('fs');
 const { sendArticles, sendArticlesKey } = require('./articles'); // Importe as funções diretamente
+const usersRouter = require('./users');
 
 // Configurar EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 router.use(express.json())
+
+app.use(express.urlencoded({ extended: true }));
+
 
 // Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
 app.get('/', function (req, res) {
@@ -21,10 +25,6 @@ app.get('/filter', function (req, res) {
     sendArticlesKey(req, res);
 });
 
-app.get('/login', (req, res) => {
-    res.render("login");
-  });
-
 app.get('/adm', (req, res) => {
     res.render("adm");
 });
@@ -32,14 +32,35 @@ app.get('/adm', (req, res) => {
 app.get('/cadastra_usuario', (req, res) => {
     res.render("users_create");
   });
+
+app.get('/Usuarios', (req, res) =>{
+    res.render("user_created");
+})
   
 app.get('/cadastra_artigo', (req, res) => {
     res.render("articles_create");
 });
+app.get('/', function (req, res) {
+    const user = req.session.user;
+    res.render('index', { user });
+});
+
+// Rota para renderizar a página de login
+app.get('/login', (req, res) => {
+    res.render("login");
+});
+
+// Rota para processar o login (se necessário)
+app.post('/login', (req, res) => {
+    // Lógica de processamento de login aqui
+});
 
 app.use(express.static('public'));
+
+app.use(usersRouter);
 
 app.listen(3000, function () {
     console.log('Executado');
     console.log("http://localhost:3000");
 });
+module.exports = router;

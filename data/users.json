@@ -1,11 +1,38 @@
 [
-    {
+  {
     "author_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
     "author_name": "Andre Faria Ruaro",
     "author_email": "andre.ruaro@unesc.net",
     "author_user": "andre.ruaro",
     "author_pwd": "7a6cc1282c5f6ec0235acd2bfa780145aaskem5n",
     "author_level": "admin",
-    "author_status": "on"
-    }
+    "author_status": "off"
+  },
+  {
+    "author_id": "eb619630-4293-4abd-ae12-9dc7859a1d2b",
+    "author_name": "Micael Mendes De Souza",
+    "author_email": "micaelmendesdesouza@gmail.com",
+    "author_user": "aa",
+    "author_pwd": "123",
+    "author_level": "standard",
+    "author_status": "off"
+  },
+  {
+    "author_id": "ca96d9eb-2dc7-408f-b291-c9ce8d82fce7",
+    "author_name": "Micael Mendes De Souza",
+    "author_email": "micaelmendesdesouza@gmail.com",
+    "author_user": "aa",
+    "author_pwd": "$2b$10$OF/7PsNmIHefWffh4ggPPOlQF0WiSaXo056m0A61Y2icjpi2WS61i",
+    "author_level": "standard",
+    "author_status": "off"
+  },
+  {
+    "author_id": "28b181ed-1627-4939-97c1-82e2e1b51801",
+    "author_name": "micael",
+    "author_email": "micaelmendesdesouza@gmail.com",
+    "author_user": "micael",
+    "author_pwd": "$2b$10$Q5IL/wX9J9EosbfoSxR56uQyHHsckDHYqDROozXTNboQMWPhzSl9W",
+    "author_level": "standard",
+    "author_status": "off"
+  }
 ]
