@@ -42,11 +42,10 @@ function sendArticlesKey(req, res) {
 
 router.get('/visualizacao', (req, res) => {
     // Obtenha os parâmetros da consulta da URL
-    const title = req.query.title;
-    const author = req.query.author;
+    const permalink = req.query.permalink;
 
     // Use esses parâmetros para encontrar o artigo correspondente em articlesData
-    const findArticle = articles.find(article => article.kb_title === title && article.kb_author_email === author);
+    const findArticle = articles.find(article => article.kb_permalink === permalink);
 
     if (findArticle) {
         res.render('article_view', findArticle);
@@ -54,6 +53,5 @@ router.get('/visualizacao', (req, res) => {
         res.send('Artigo não encontrado');
     }
 });
-
 
 module.exports = { sendArticles, sendArticlesKey, router};
