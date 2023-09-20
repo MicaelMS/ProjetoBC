@@ -1,8 +1,8 @@
 [ 
     {
         "kb_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
-        "kb_title": "O Pneu de Itaquera",
-        "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p>",
+        "kb_title": "O Pneu de Itaquera1",
+        "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p><p>TESTE 1</p><p>Este artigo é um teste para uma base de conhecimento.</p><p>TESTE 1</p><p>Este artigo é um teste para uma base de conhecimento.</p><p>TESTE 1</p><p>Este artigo é um teste para uma base de conhecimento.</p><p>TESTE 1</p>",
         "kb_permalink": "titulo01",
         "kb_keywords": "baba",
         "kb_liked_count": "10",
@@ -15,8 +15,8 @@
     },
     {
         "kb_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
-        "kb_title": "O Pneu de Itaquera",
-        "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p>",
+        "kb_title": "O Pneu de Itaquera2",
+        "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p><p>TESTE 2</p>",
         "kb_permalink": "titulo01",
         "kb_keywords": "teste",
         "kb_liked_count": "10",
@@ -29,8 +29,8 @@
     },
     {
         "kb_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
-        "kb_title": "O Pneu de Itaquera",
-        "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p>",
+        "kb_title": "O Pneu de Itaquera3",
+        "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p> <p>TESTE 3</p>",
         "kb_permalink": "titulo01",
         "kb_keywords": "teste",
         "kb_liked_count": "10",

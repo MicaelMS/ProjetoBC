@@ -33,11 +33,27 @@ function sendArticlesKey(req, res) {
     // Classificar os artigos filtrados por kb_liked_count em ordem decrescente
     filteredArticles.sort((a, b) => parseInt(b.kb_liked_count) - parseInt(a.kb_liked_count));
 
-    // Pegar os dois primeiros artigos após a classificação
+    // Pegar os dez primeiros artigos após a classificação
     const topArticles = filteredArticles.slice(0, 10);
 
     // Renderizar a página de resultados com os artigos filtrados
     res.render('index', { articles: topArticles, keyword: keywordToFilter });
 }
 
-module.exports = { sendArticles, sendArticlesKey };
+router.get('/visualizacao', (req, res) => {
+    // Obtenha os parâmetros da consulta da URL
+    const title = req.query.title;
+    const author = req.query.author;
+
+    // Use esses parâmetros para encontrar o artigo correspondente em articlesData
+    const findArticle = articles.find(article => article.kb_title === title && article.kb_author_email === author);
+
+    if (findArticle) {
+        res.render('article_view', findArticle);
+    } else {
+        res.send('Artigo não encontrado');
+    }
+});
+
+
+module.exports = { sendArticles, sendArticlesKey, router};

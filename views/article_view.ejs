@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização do Artigo</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justi   tent-between">
+        <div class="container">
+            <a class="navbar-brand text-light" href="/">Home</a>
+            <form class="form-inline ml-auto" action="/login" method="GET">
+                <form action="/login" method="POST">
+                    <button type="submit" class="btn btn-primary text-light ml-auto">Logar</button>
+                </form>
+            </form>
+        </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5" style="background-color: rgb(141, 150, 158); border-radius: 10%; padding-bottom: 50px;">
+        </br>
+        <div class="text-center text-light">
+            <h1><%= kb_title %></h1>
+        </div>
+        <div class="card mt-3">
+            <div class="card-body" style="width: 40%;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Autor: <%= kb_author_email %></span>
+                    <span>Publicado: <%= kb_published_date %></span>
+                    <a href="/curtido" class="btn" method="POST">&#10084;<%= kb_liked_count %></a>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-body justify-content-between align-items-center">
+                <%- kb_body %>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
