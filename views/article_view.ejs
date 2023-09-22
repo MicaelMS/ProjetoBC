@@ -31,12 +31,15 @@
         <div class="text-center text-light">
             <h1><%= kb_title %></h1>
         </div>
-        <div class="card mt-3">
-            <div class="card-body" style="width: 40%;">
-                <div class="d-flex justify-content-between align-items-center">
+        <div class="card mt-6">
+            <div class="card-body">
+                <div class="d-flex justify-content align-items-center">
                     <span>Autor: <%= kb_author_email %></span>
-                    <span>Publicado: <%= kb_published_date %></span>
-                    <a href="/curtido" class="btn ml-auto" method="POST" id="login-button">&#10084;<%= kb_liked_count %></a>
+                    <span style="margin-left: 20px;">Publicado: <%= kb_published_date %></span>
+                    <form class="form-inline ml-auto" action="/curtido" method="POST">
+                        <input type="hidden" name="permalink" value="<%= kb_permalink %>">
+                        <button type="submit" class="btn ml-auto" id="login-button" style="margin-left: 20px;">&#10084;<%= kb_liked_count %></button>
+                    </form>
                 </div>
             </div>
         </div>

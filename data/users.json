@@ -34,5 +34,14 @@
     "author_pwd": "$2b$10$Q5IL/wX9J9EosbfoSxR56uQyHHsckDHYqDROozXTNboQMWPhzSl9W",
     "author_level": "standard",
     "author_status": "off"
+  },
+  {
+    "author_id": "7cb7ee72-2178-4c07-a895-1b8d0265f687",
+    "author_name": "micael",
+    "author_email": "micaelmendes@gmail.com",
+    "author_user": "micael",
+    "author_pwd": "$2b$10$v9zPXR7FRiDOzT8HaplkLuLPYvZmfNKtIZ/b/vMQPuoj/pt4leTWy",
+    "author_level": "standard",
+    "author_status": "on"
   }
 ]

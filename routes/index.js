@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const artcilesModule= require('./articles');
 const usersRouter = require('./users');
+const adminRouter = require('./admin');
 
 // Configurar EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
@@ -24,18 +25,6 @@ app.get('/', function (req, res) {
 app.get('/filter', function (req, res) {
     artcilesModule.sendArticlesKey(req, res);
 });
-
-app.get('/adm', (req, res) => {
-    res.render("adm");
-});
-
-app.get('/cadastra_usuario', (req, res) => {
-    res.render("users_create");
-  });
-
-app.get('/Usuarios', (req, res) =>{
-    res.render("user_created");
-})
   
 app.get('/cadastra_artigo', (req, res) => {
     res.render("articles_create");
@@ -54,11 +43,14 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     // Lógica de processamento de login aqui
 });
+app.post('/')
 
 app.use(express.static('public'));
 
 app.use(usersRouter);
 app.use(artcilesModule.router);
+
+app.use(adminRouter);
 
 app.listen(3000, function () {
     console.log('Executado');

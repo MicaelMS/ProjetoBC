@@ -11,7 +11,34 @@ const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
 const usersJSON = fs.readFileSync(usersFilePath, 'utf-8');
 const users = JSON.parse(usersJSON);
 
-function sendUsersName(req, res) {
+router.get('/cadastro_usuario', (req, res) => {
+  res.render("users_create");
+});
+
+router.get('/edita_usuario', (req, res) => {
+  res.render("users_edit");
+});
+
+// Rota para processar o cadastro de usuário
+router.post('/cadastro-usuario', (req, res) => {
+    const { nome, email } = req.body;
+  
+    usuarios.push({ nome, email });
+    res.redirect('/admin');
+  });
+  
+  // Rota para processar a edição de usuário
+  router.post('/editar-usuario', (req, res) => {
+    const { nome, email } = req.body;
+  
+    const usuarioIndex = usuarios.findIndex((u) => u.email === email);
+    if (usuarioIndex !== -1) {
+      usuarios[usuarioIndex].nome = nome;
+    }
+    res.redirect('/admin');
+  });
+  
+const sendUsersName = (req, res) => {
     const UserIdFilter = req.query.keyword;
 
     // Filtra os usuários com base no campo author_name
@@ -44,10 +71,10 @@ router.post('/cadastrar-usuario', async function (req, res) {
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), 'utf-8');
 
     // Redirecione para a página principal ou qualquer outra página desejada
-    res.redirect('/');
+    res.redirect('/admin');
 });
 
-function generateUniqueId() {
+const generateUniqueId = () => {
     return uuidv4(); // Gere um ID único usando a biblioteca uuid
 }
 

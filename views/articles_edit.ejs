@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Artigo</title>
+</head>
+<body>
+    <h1>Formulário de Artigo</h1>
+
+    <form action="/enviar" method="post">
+        <div>
+            <label for="kb_title">Título:</label>
+            <input type="text" id="kb_title" name="kb_title" value="Título 01" readonly>
+        </div>
+
+        <div>
+            <label for="kb_body">Corpo do Artigo:</label>
+            <textarea id="kb_body" name="kb_body" rows="10"></textarea>
+        </div>
+
+        <div>
+            <label for="kb_permalink">Permalink:</label>
+            <input type="text" id="kb_permalink" name="kb_permalink" value="titulo01" readonly>
+        </div>
+
+        <div>
+            <label for="kb_keywords">Palavras-chave:</label>
+            <input type="text" id="kb_keywords" name="kb_keywords" value="teste" readonly>
+        </div>
+
+        <div>
+            <label for="kb_liked_count">Contagem de Curtidas:</label>
+            <input type="text" id="kb_liked_count" name="kb_liked_count" value="10" readonly>
+        </div>
+
+        <div>
+            <label for="kb_published">Publicado:</label>
+            <input type="text" id="kb_published" name="kb_published" value="on" readonly>
+        </div>
+
+        <div>
+            <label for="kb_suggestion">Sugestão:</label>
+            <input type="text" id="kb_suggestion" name="kb_suggestion" value="on" readonly>
+        </div>
+
+        <div>
+            <label for="kb_featured">Destaque:</label>
+            <input type="text" id="kb_featured" name="kb_featured" value="on" readonly>
+        </div>
+
+        <div>
+            <label for="kb_author_email">Email do Autor:</label>
+            <input type="text" id="kb_author_email" name="kb_author_email" value="andre.ruaro@unesc.net" readonly>
+        </div>
+
+        <div>
+            <label for="kb_published_date">Data de Publicação:</label>
+            <input type="text" id="kb_published_date" name="kb_published_date" value="2023-08-30" readonly>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
