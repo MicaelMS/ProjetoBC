@@ -18,19 +18,39 @@
     </nav>
 
     <div class="card-body">
-    <h1>Cadastrar Usuário</h1>
-    <form action="/cadastrar-usuario" method="POST">
-        <label for="author_name">Nome:</label>
-        <input type="text" id="author_name" name="author_name" required><br>
-        <label for="author_email">Email:</label>
-        <input type="email" id="author_email" name="author_email" required><br>
-        <label for="author_user">Usuário:</label>
-        <input type="text" id="author_user" name="author_user" required><br>
-        <label for="author_pwd">Senha:</label>
-        <input type="password" id="author_pwd" name="author_pwd" required><br>
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-body">
+                            <h1>Cadastrar Usuário</h1>
+                            <form action="/cadastrar-usuario" method="POST">
+                                <div class="form-group">
+                                    <label for="author_name">Nome:</label>
+                                    <input type="text" id="author_name" name="author_name" class="form-control" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="author_email">Email:</label>
+                                    <input type="email" id="author_email" name="author_email" class="form-control" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="author_user">Usuário:</label>
+                                    <input type="text" id="author_user" name="author_user" class="form-control" required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="author_pwd">Senha:</label>
+                                    <input type="password" id="author_pwd" name="author_pwd" class="form-control" required><br>
+                                </div>
+                                <button type="submit" class="form-control btn btn-primary btn-block">Cadastrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
