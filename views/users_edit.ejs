@@ -11,25 +11,40 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justi   tent-between">
         <div class="container">
             <a class="navbar-brand text-light" href="/admin">Voltar a tela de admin</a>
-            <form class="form-inline ml-auto" action="/login" method="GET">
-            </form>
-        </div>
         </div>
     </nav>
-
-    <div class="card-body">
-    <h1>Editar Usuário</h1>
-    <form action="/cadastrar-usuario" method="POST">
-        <label for="author_name">Nome:</label>
-        <input type="text" id="author_name" name="author_name" required><br>
-        <label for="author_email">Email:</label>
-        <input type="email" id="author_email" name="author_email" required><br>
-        <label for="author_user">Usuário:</label>
-        <input type="text" id="author_user" name="author_user" required><br>
-        <label for="author_pwd">Senha:</label>
-        <input type="password" id="author_pwd" name="author_pwd" required><br>
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-body">
+                            <h1>Editar Usuário</h1>
+                            <form action="/editar-usuario" method="POST">
+                                <input type="hidden" value="<%= author_id %>" name="author_id">
+                                <div class="form-group">
+                                <label for="author_name">Nome:</label>
+                                <input type="text" id="author_name" value="<%= author_name %>" name="author_name"  class="form-control" required><br>
+                                </div>
+                                <div class="form-group">
+                                <label for="author_email">Email:</label>
+                                <input type="email" id="author_email" value="<%= author_email %>" name="author_email"  class="form-control" required><br>
+                                </div>
+                                <div class="form-group">
+                                <label for="author_user">Usuário:</label>
+                                <input type="text" id="author_user" value="<%= author_user %>" name="author_user"  class="form-control" required><br>
+                                </div>
+                                <label for="author_pwd">Senha:</label>
+                                <input type="password" id="author_pwd" name="author_pwd"  class="form-control" required><br>
+                                <button type="submit"  class="form-control">Salvar</button>
+                                <input type="hidden" value="<%= author_level %>" name="author_level">
+                                <input type="hidden" value="<%= author_status %>" name="author_status">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>

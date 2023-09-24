@@ -1,28 +1,28 @@
 [
   {
     "author_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
-    "author_name": "Andre Faria Ruaro",
+    "author_name": "Andre Faria",
     "author_email": "andre.ruaro@unesc.net",
     "author_user": "andre.ruaro",
-    "author_pwd": "7a6cc1282c5f6ec0235acd2bfa780145aaskem5n",
-    "author_level": "admin",
+    "author_pwd": "$2b$10$7KaDZ3UVHYQpMa2O1QcVcuUF5eWZFOqMU7X8Drx23kaY/KX5wHL0.",
+    "author_level": "standard",
     "author_status": "off"
   },
   {
     "author_id": "eb619630-4293-4abd-ae12-9dc7859a1d2b",
-    "author_name": "Micael Mendes De Souza",
+    "author_name": "Micael Mendes D.",
     "author_email": "micaelmendesdesouza@gmail.com",
-    "author_user": "aa",
-    "author_pwd": "123",
+    "author_user": "Micael D.",
+    "author_pwd": "$2b$10$8oAH7Nwu0/elDOnV7cGCn.n5/zJL64r.jAHaZl7uC8d6k7nJirIs.",
     "author_level": "standard",
     "author_status": "off"
   },
   {
     "author_id": "ca96d9eb-2dc7-408f-b291-c9ce8d82fce7",
-    "author_name": "Micael Mendes De Souza",
+    "author_name": "Micael Mendes De Souz",
     "author_email": "micaelmendesdesouza@gmail.com",
     "author_user": "aa",
-    "author_pwd": "$2b$10$OF/7PsNmIHefWffh4ggPPOlQF0WiSaXo056m0A61Y2icjpi2WS61i",
+    "author_pwd": "$2b$10$kZI8CuXBOrnv26DarhoImumf0T4Cr3PwPorFbUjNAXOBJaKuNz7ae",
     "author_level": "standard",
     "author_status": "off"
   },
@@ -41,6 +41,24 @@
     "author_email": "micaelmendes@gmail.com",
     "author_user": "micael",
     "author_pwd": "$2b$10$v9zPXR7FRiDOzT8HaplkLuLPYvZmfNKtIZ/b/vMQPuoj/pt4leTWy",
+    "author_level": "standard",
+    "author_status": "on"
+  },
+  {
+    "author_id": "64ee0569-a3cc-47b8-8cb4-e2463c7370d5",
+    "author_name": "micael1",
+    "author_email": "micaelmendesdesouza@gmail.com",
+    "author_user": "mica123",
+    "author_pwd": "$2b$10$oY44UzLzKG6u4GeJQQjh0OwNG9Wc/c.BtTjkp/3BBxO424Tuss6Ai",
+    "author_level": "standard",
+    "author_status": "on"
+  },
+  {
+    "author_id": "bba3690f-fb61-4852-a444-044acbc9d464",
+    "author_name": "mimimimmi",
+    "author_email": "mi@gmail.com.br",
+    "author_user": "mi",
+    "author_pwd": "$2b$10$MRwILhgNMDdN6zJ6my1FlOiYP1p1L.rwpngNPxpQSU.WgFwuQJ2LK",
     "author_level": "standard",
     "author_status": "on"
   }

@@ -4,7 +4,7 @@
   "description": "ProjetoBC",
   "main": "app.js",
   "scripts": {
-    "start": "node routes/index.js",
+    "start": "nodemon routes/index.js",
     "test": "test"
   },
   "repository": {

@@ -8,99 +8,100 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justi   tent-between">
-    <div class="container">
-        <a class="navbar-brand text-light" href="/">Deslogar</a>
-        <form class="form-inline ml-auto" action="/login" method="GET">
-        </form>
-    </div>
-    </div>
-</nav>
-
-<div class="container mt-5">
-    <div class="row">
-        <!-- Seção de Usuários -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3>Usuários</h3>
-                        <a href="/cadastro_usuario" class="btn btn-success">Cadastrar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justi   tent-between">
+        <div class="container">
+            <a class="navbar-brand text-light" href="/">Deslogar</a>
+            <form class="form-inline ml-auto" action="/login" method="GET">
+            </form>
+        </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Seção de Usuários -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3>Usuários</h3>
+                            <a href="/cadastro_usuario" class="btn btn-success">Cadastrar</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Nível</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% users.forEach(function(user) { %>
+                                    <tr>
+                                        <td style="width: 400px;"><%= user.author_name %></td>
+                                        <td style="width: 200px;"><%= user.author_email %></td>
+                                        <td style="width: 50px;"><%= user.author_level %></td>
+                                        <td>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <form action="/edita_usuario" method="POST">
+                                                    <input type="hidden" name="id" value="<%= user.author_id %>">
+                                                    <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+                                                </form> 
+                                                <button class="btn btn-danger btn-sm" style="margin-left: 5px;">Deletar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Nível</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% users.forEach(function(user) { %>
+            </div>
+            
+            <!-- Seção de Artigos -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3>Artigos</h3>
+                            <a href="/cadastra_artigo" class="btn btn-success">Cadastrar</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td style="width: 400px;"><%= user.author_name %></td>
-                                    <td style="width: 200px;"><%= user.author_email %></td>
-                                    <td style="width: 50px;"><%= user.author_level %></td>
-                                    <td>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <a href="/edita_usuario" class="btn btn-primary btn-sm">Editar</a>
-                                            <button class="btn btn-danger btn-sm" style="margin-left: 5px;">Deletar</button>
-                                        </div>
-                                    </td>
+                                    <th>Titulo</th>
+                                    <th>Email Autor</th>
+                                    <th>Publicado</th>
+                                    <th>Curtidas</th>
+                                    <th>Ações</th>
                                 </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <% articles.forEach(function(article) { %>
+                                    <tr>
+                                        <td style="width: 200px;"><%= article.kb_title %></td>
+                                        <td style="width: 150px;"><%= article.kb_author_email %></td>
+                                        <td style="width: 150px;"><%= article.kb_published_date %></td>
+                                        <td style="width: 50px;"><%= article.kb_liked_count %></td>
+                                        <td>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <a href="/edita_artigo" class="btn btn-primary btn-sm">Editar</a>
+                                                <button class="btn btn-danger btn-sm" style="margin-left: 5px;">Deletar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Seção de Artigos -->
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3>Artigos</h3>
-                        <button class="btn btn-success">Cadastrar</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Titulo</th>
-                                <th>Email Autor</th>
-                                <th>Publicado</th>
-                                <th>Curtidas</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% articles.forEach(function(article) { %>
-                                <tr>
-                                    <td style="width: 200px;"><%= article.kb_title %></td>
-                                    <td style="width: 150px;"><%= article.kb_author_email %></td>
-                                    <td style="width: 150px;"><%= article.kb_published_date %></td>
-                                    <td style="width: 50px;"><%= article.kb_liked_count %></td>
-                                    <td>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <button class="btn btn-primary btn-sm">Editar</button>
-                                            <button class="btn btn-danger btn-sm" style="margin-left: 5px;">Deletar</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
-<script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

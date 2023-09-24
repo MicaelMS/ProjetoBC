@@ -3,7 +3,6 @@ const router = express.Router();
 const app = express();
 const fs = require('fs');
 const path = require('path');
-const homeRouter = require('./index');
 const usersRouter = require('./users')
 
 const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
@@ -21,6 +20,10 @@ router.post('/excluir-usuario', (req, res) => {
 
   usuarios = usuarios.filter((u) => u.email !== email);
   res.redirect('/admin');
+});
+
+app.get('/cadastro_usuario', (req, res) => {
+  res.render("users_create");
 });
 
 router.post('/cadastro-artigo', (req, res) => {
@@ -53,6 +56,6 @@ router.get('/admin', (req, res) => {
     res.render('admin', {users: users, articles: articles });
 });
 
-app.use(usersRouter);
+app.use(usersRouter.router)
 
 module.exports = router;

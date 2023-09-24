@@ -47,7 +47,7 @@ app.post('/')
 
 app.use(express.static('public'));
 
-app.use(usersRouter);
+app.use(usersRouter.router);
 app.use(artcilesModule.router);
 
 app.use(adminRouter);
