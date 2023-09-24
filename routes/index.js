@@ -7,6 +7,7 @@ const fs = require('fs');
 const artcilesModule= require('./articles');
 const usersRouter = require('./users');
 const adminRouter = require('./admin');
+const loginRouter = require('./login');
 
 // Configurar EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
@@ -39,10 +40,6 @@ app.get('/login', (req, res) => {
     res.render("login");
 });
 
-// Rota para processar o login (se necessário)
-app.post('/login', (req, res) => {
-    // Lógica de processamento de login aqui
-});
 app.post('/')
 
 app.use(express.static('public'));
@@ -51,6 +48,7 @@ app.use(usersRouter.router);
 app.use(artcilesModule.router);
 
 app.use(adminRouter);
+app.use(loginRouter);
 
 app.listen(3000, function () {
     console.log('Executado');

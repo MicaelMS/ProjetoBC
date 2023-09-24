@@ -5,10 +5,15 @@ const ejs = require('ejs');
 const path = require('path');
 const fs = require('fs');
 const liked_counter = require('../middwares/liked_counter')
+const usersRouter = require('./users');
+const users = usersRouter.loadUsers();
 
 // Configurar EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
 app.set('views', './views');
+let successMessage = '';
+let errorMessage = '';
+
 
 // Leitura do arquivo JSON de dados
 const articlesFilePath = path.join(__dirname, '..', 'data', 'articles.json');
@@ -60,4 +65,32 @@ router.post('/curtido', (req, res) => {
     liked_counter.curtir(req, res);
 });
 
-module.exports = { sendArticles, sendArticlesKey, router};
+function updateArticleStatus(articleTitle, newStatus) {
+    const articlesData = loadArticles();
+    const index = articlesData.findIndex(article => article.kb_title === articleTitle);
+    if (index !== -1) {
+        articlesData[index].kb_featured = newStatus; // Atualize o status do artigo
+        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2), 'utf8');
+        successMessage = 'Artigo atualizado com sucesso!'; // Defina a mensagem de sucesso
+    } else {
+        errorMessage = 'Artigo não encontrado.'; // Defina a mensagem de erro
+    }
+  }
+  router.get('/admin', (req, res) => {
+    // Passe as mensagens de sucesso e erro para a página admin e depois limpe-as
+    res.render('admin', { users: users, articles: articles, successMessage, errorMessage });
+    // Limpe as variáveis após renderizar a página
+    successMessage = '';
+    errorMessage = '';
+  });
+  function loadArticles() {
+    try {
+      const data = fs.readFileSync(articlesFilePath, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      // Lida com erros de leitura do arquivo (por exemplo, arquivo inexistente)
+      console.error('Erro ao carregar dados dos artigos:', error);
+      return [];
+    }
+  }
+module.exports = { loadArticles, sendArticles, sendArticlesKey, router};

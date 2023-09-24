@@ -1,10 +1,10 @@
 [
   {
     "author_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
-    "author_name": "Andre Faria",
+    "author_name": "Andre Farias",
     "author_email": "andre.ruaro@unesc.net",
     "author_user": "andre.ruaro",
-    "author_pwd": "$2b$10$7KaDZ3UVHYQpMa2O1QcVcuUF5eWZFOqMU7X8Drx23kaY/KX5wHL0.",
+    "author_pwd": "$2b$10$p0enQroJqdrapkmTrnWaLOyAQSkpdPOvKAA5D1RBX9JF6xE5m05QK",
     "author_level": "standard",
     "author_status": "off"
   },
@@ -22,7 +22,7 @@
     "author_name": "Micael Mendes De Souz",
     "author_email": "micaelmendesdesouza@gmail.com",
     "author_user": "aa",
-    "author_pwd": "$2b$10$kZI8CuXBOrnv26DarhoImumf0T4Cr3PwPorFbUjNAXOBJaKuNz7ae",
+    "author_pwd": "$2b$10$TLrR4JoS6U26Pj.z8SgBregEhk5u2TNQO9eyOmrcMJ5bK/b8zYYrC",
     "author_level": "standard",
     "author_status": "off"
   },

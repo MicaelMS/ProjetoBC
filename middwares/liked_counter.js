@@ -15,10 +15,10 @@ const curtir = (req, res) => {
         fs.writeFile(articlesFilePath, updatedArticlesJSON, 'utf8', (err) => {
             if (err) {
                 console.error('Erro ao curtir o artigo:', err);
-                res.redirect('article_view');
+                res.render('article_view', findArticle);
                 res.status(500).send('Erro ao curtir o artigo:');
             } else {
-                res.redirect('article_view');
+                res.render('article_view', findArticle);
                 res.sendStatus(200);
             }
         });

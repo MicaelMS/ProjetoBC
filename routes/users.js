@@ -93,15 +93,16 @@ async function editUser(updatedUser) {
   }
 }
 
-// Função para excluir um usuário
+// Altere a função deleteUser para atualizar o status do usuário em vez de excluí-lo
 function deleteUser(userId) {
   const usersData = loadUsers();
   const index = usersData.findIndex(user => user.author_id === userId);
   if (index !== -1) {
-      usersData.splice(index, 1);
+      usersData[index].author_status = 'off'; // Atualize o status do usuário para "off"
       fs.writeFileSync(usersFilePath, JSON.stringify(usersData, null, 2), 'utf8');
   }
 }
+
 function loadUsers() {
   try {
       const data = fs.readFileSync(usersFilePath, 'utf8');
