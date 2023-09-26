@@ -12,6 +12,7 @@ const articlesFilePath = path.join(__dirname, '..', 'data', 'articles.json');
 const articlesJSON = fs.readFileSync(articlesFilePath, 'utf8');
 const articles = JSON.parse(articlesJSON);
 const { loadArticles } = require('./articles'); // Importe a função loadArticles do arquivo articles.js
+const { checkAdminLevel } = require('../middwares/authenticator');
 
 let usuarios = [];
 let artigos = [];
@@ -54,8 +55,6 @@ router.post('/excluir-usuario', (req, res) => {
   res.redirect('/admin');
 });
 
-
-
 // Rota para a página admin
 router.get('/admin', (req, res) => {
   // Passe a mensagem de sucesso para a página admin e depois limpe a variável
@@ -64,8 +63,6 @@ router.get('/admin', (req, res) => {
 
   res.render('admin', { users: users, articles: articles, successMessage: message });
 });
-
-
 
 app.get('/cadastro_usuario', (req, res) => {
   res.render("users_create");

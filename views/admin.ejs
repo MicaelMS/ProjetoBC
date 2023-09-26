@@ -19,7 +19,7 @@
     <div class="container mt-5">
         <div class="row">
             <!-- Seção de Usuários -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -40,10 +40,10 @@
                             <tbody>
                                 <% users.forEach(function(user) { %>
                                     <tr>
-                                        <td style="width: 400px;"><%= user.author_name %></td>
-                                        <td style="width: 200px;"><%= user.author_email %></td>
-                                        <td style="width: 50px;"><%= user.author_level %></td>
-                                        <td>
+                                        <td style="width: 40%;"><%= user.author_name %></td>
+                                        <td style="width: 30%;"><%= user.author_email %></td>
+                                        <td style="width: 20%;"><%= user.author_level %></td>
+                                        <td style="width: 20%;">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <form action="/edita_usuario" method="POST">
                                                     <input type="hidden" name="id" value="<%= user.author_id %>">
@@ -69,7 +69,7 @@
             </div>
             
             <!-- Seção de Artigos -->
-            <div class="col-md-6">
+            <div class="col-md-12" style="margin-top: 50px;">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
@@ -91,13 +91,16 @@
                             <tbody>
                                 <% articles.forEach(function(article) { %>
                                     <tr>
-                                        <td style="width: 200px;"><%= article.kb_title %></td>
-                                        <td style="width: 150px;"><%= article.kb_author_email %></td>
-                                        <td style="width: 150px;"><%= article.kb_published_date %></td>
-                                        <td style="width: 50px;"><%= article.kb_liked_count %></td>
+                                        <td style="width: 30%;"><%= article.kb_title %></td>
+                                        <td style="width: 30%;"><%= article.kb_author_email %></td>
+                                        <td style="width: 20%;"><%= article.kb_published_date %></td>
+                                        <td style="width: 20%;"><%= article.kb_liked_count %></td>
                                         <td>
                                             <div class="d-flex justify-content-between align-items-center">
-                                              <a href="/edita_artigo" class="btn btn-primary btn-sm">Editar</a>
+                                              <form action="/edita_artigo" method="POST">
+                                                <input type="hidden" name="id" value="<%= article.kb_id %>">
+                                                <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+                                              </form>
                                               <form action="/excluir-artigo" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este artigo?')">
                                                 <input type="hidden" name="articleId" value="<%= article.kb_id %>">
                                                 <input type="hidden" name="newStatus" value="off"> <!-- Defina o novo status como 'off' -->
