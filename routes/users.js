@@ -83,10 +83,10 @@ async function editUser(updatedUser) {
     fs.writeFileSync(usersFilePath, JSON.stringify(usersData, null, 2), 'utf8', (err) => {
       if (err) {
         console.error('Erro :', err);
-        res.redirect('admin');
+        res.redirect('/admin');
         res.status(500).send('Erro:');
       } else {
-        res.redirect('admin');
+        res.redirect('/admin');
         res.sendStatus(200);
       }
     });
@@ -94,12 +94,15 @@ async function editUser(updatedUser) {
 }
 
 // Altere a função deleteUser para atualizar o status do usuário em vez de excluí-lo
-function deleteUser(userId) {
+function deleteUser(userId, res) {
   const usersData = loadUsers();
   const index = usersData.findIndex(user => user.author_id === userId);
   if (index !== -1) {
       usersData[index].author_status = 'off'; // Atualize o status do usuário para "off"
       fs.writeFileSync(usersFilePath, JSON.stringify(usersData, null, 2), 'utf8');
+
+      // Redirecione após a exclusão     
+      res.redirect('/admin');
   }
 }
 
@@ -135,7 +138,7 @@ router.post('/editar-usuario', (req, res) => {
 router.post('/excluir-usuario', (req, res) => {
   const userId = req.body.author_id;
 
-  deleteUser(userId);
+  deleteUser(userId, res);
 
   res.redirect('/admin');
 });

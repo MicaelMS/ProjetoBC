@@ -6,7 +6,7 @@
     "author_user": "andre.ruaro",
     "author_pwd": "$2b$10$eBB.6DDVmjSq0fxMdoaP8uiP0sfXw5IOtZPaE33ISYtBdBOHtnlrC",
     "author_level": "standard",
-    "author_status": "off"
+    "author_status": "on"
   },
   {
     "author_id": "eb619630-4293-4abd-ae12-9dc7859a1d2b",
@@ -15,7 +15,7 @@
     "author_user": "Micael D.",
     "author_pwd": "$2b$10$8oAH7Nwu0/elDOnV7cGCn.n5/zJL64r.jAHaZl7uC8d6k7nJirIs.",
     "author_level": "standard",
-    "author_status": "off"
+    "author_status": "on"
   },
   {
     "author_id": "ca96d9eb-2dc7-408f-b291-c9ce8d82fce7",
@@ -24,7 +24,7 @@
     "author_user": "aa",
     "author_pwd": "$2b$10$TLrR4JoS6U26Pj.z8SgBregEhk5u2TNQO9eyOmrcMJ5bK/b8zYYrC",
     "author_level": "standard",
-    "author_status": "off"
+    "author_status": "on"
   },
   {
     "author_id": "28b181ed-1627-4939-97c1-82e2e1b51801",
@@ -33,7 +33,7 @@
     "author_user": "micael",
     "author_pwd": "$2b$10$Q5IL/wX9J9EosbfoSxR56uQyHHsckDHYqDROozXTNboQMWPhzSl9W",
     "author_level": "standard",
-    "author_status": "off"
+    "author_status": "on"
   },
   {
     "author_id": "7cb7ee72-2178-4c07-a895-1b8d0265f687",
@@ -60,6 +60,6 @@
     "author_user": "mi",
     "author_pwd": "$2b$10$MRwILhgNMDdN6zJ6my1FlOiYP1p1L.rwpngNPxpQSU.WgFwuQJ2LK",
     "author_level": "standard",
-    "author_status": "on"
+    "author_status": "off"
   }
 ]

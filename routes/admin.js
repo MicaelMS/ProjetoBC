@@ -12,16 +12,18 @@ const articlesFilePath = path.join(__dirname, '..', 'data', 'articles.json');
 const articlesJSON = fs.readFileSync(articlesFilePath, 'utf8');
 const articles = JSON.parse(articlesJSON);
 const { loadArticles } = require('./articles'); // Importe a função loadArticles do arquivo articles.js
+const {loadUsers} = require('./users');
 const { checkAdminLevel } = require('../middwares/authenticator');
 
 let usuarios = [];
 let artigos = [];
 
 router.get('/admin', (req, res) => {
-  // Defina as variáveis successMessage e errorMessage conforme necessário aqui
+  const articlesFilter = articles.filter(article => article.kb_published == 'on');
+  const usersFilter = users.filter(user => user.author_status == 'on');
 
   // Passe essas variáveis para a página admin e depois limpe-as
-  res.render('admin', { users: users, articles: articles, successMessage, errorMessage });
+  res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage, errorMessage });
   // Limpe as variáveis após renderizar a página
   successMessage = '';
   errorMessage = '';
@@ -61,7 +63,10 @@ router.get('/admin', (req, res) => {
   const message = successMessage;
   successMessage = ''; // Limpe a mensagem
 
-  res.render('admin', { users: users, articles: articles, successMessage: message });
+  const articlesFilter = articles.filter(article => article.kb_published == 'on');
+  const usersFilter = users.filter(user => user.author_status == 'on');
+
+  res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage: message });
 });
 
 app.get('/cadastro_usuario', (req, res) => {
@@ -88,10 +93,9 @@ router.post('/editar-artigo', (req, res) => {
 // Rota para processar a exclusão de artigo
 router.post('/excluir-artigo', (req, res) => {
   const articleId = req.body.articleId; // Obtém o ID do artigo
-  const newStatus = 'off'; // Define o novo status como 'off'
 
   // Use a função updateArticleStatus para atualizar o status do artigo
-  const articleUpdated = updateArticleStatus(articleId, newStatus);
+  const articleUpdated = updateArticleStatus(articleId, 'off');
 
   if (articleUpdated) {
     successMessage = 'Artigo alterado para "off" com sucesso!';
@@ -106,8 +110,11 @@ router.post('/excluir-artigo', (req, res) => {
 function updateArticleStatus(articleId, newStatus) {
   const articlesData = loadArticles();
   const article = articlesData.find(article => article.kb_id === articleId);
+  const index = articlesData.findIndex(article => article.kb_id === articleId);
+
   if (article) {
-    article.kb_featured = newStatus; // Atualiza o status do artigo
+    article.kb_published = newStatus; // Atualiza o status do artigo
+    articlesData[index].kb_published = newStatus;
     fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2), 'utf8');
     return true; // Indica que o artigo foi atualizado com sucesso
   }

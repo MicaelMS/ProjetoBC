@@ -39,17 +39,19 @@ const sendArticles = (req, res) => {
     // Classificar os artigos por kb_liked_count em ordem decrescente
     articles.sort((a, b) => parseInt(b.kb_liked_count) - parseInt(a.kb_liked_count));
 
+    const filteredArticles = articles.filter(article => article.kb_published == 'on');
     // Pegar os dois primeiros artigos após a classificação
-    const topArticles = articles.slice(0, 10);
+    const topArticles = filteredArticles.slice(0, 10);
 
     res.render('index', { articles: topArticles });
 }
 
 const sendArticlesKey = (req, res) => {
     const keywordToFilter = req.query.keyword; // Obter a palavra-chave da consulta
+    articles.sort((a, b) => parseInt(b.kb_liked_count) - parseInt(a.kb_liked_count));
 
     // Filtrar os artigos com base na palavra-chave
-    const filteredArticles = articles.filter(article => article.kb_keywords.includes(keywordToFilter));
+    const filteredArticles = articles.filter(article => article.kb_keywords.includes(keywordToFilter) && article.kb_published == 'on');
 
     // Classificar os artigos filtrados por kb_liked_count em ordem decrescente
     filteredArticles.sort((a, b) => parseInt(b.kb_liked_count) - parseInt(a.kb_liked_count));
@@ -95,20 +97,23 @@ router.post('/curtido', (req, res) => {
     liked_counter.curtir(req, res);
 });
 
-function updateArticleStatus(articleTitle, newStatus) {
-    const articlesData = loadArticles();
-    const index = articlesData.findIndex(article => article.kb_title === articleTitle);
-    if (index !== -1) {
-        articlesData[index].kb_featured = newStatus; // Atualize o status do artigo
-        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2), 'utf8');
-        successMessage = 'Artigo atualizado com sucesso!'; // Defina a mensagem de sucesso
-    } else {
-        errorMessage = 'Artigo não encontrado.'; // Defina a mensagem de erro
-    }
-  }
+// function updateArticleStatus(articleTitle, newStatus) {
+//     const articlesData = loadArticles();
+//     const index = articlesData.findIndex(article => article.kb_title === articleTitle);
+//     if (index !== -1) {
+//         articlesData[index].kb_featured = newStatus; // Atualize o status do artigo
+//         fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2), 'utf8');
+//         successMessage = 'Artigo atualizado com sucesso!'; // Defina a mensagem de sucesso
+//     } else {
+//         errorMessage = 'Artigo não encontrado.'; // Defina a mensagem de erro
+//     }
+//   }
   router.get('/admin', (req, res) => {
     // Passe as mensagens de sucesso e erro para a página admin e depois limpe-as
-    res.render('admin', { users: users, articles: articles, successMessage, errorMessage });
+    const articlesFilter = articles.filter(article => article.kb_published == 'on');
+    const usersFilter = users.filter(user => user.author_status == 'on');
+
+    res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage, errorMessage });
     // Limpe as variáveis após renderizar a página
     successMessage = '';
     errorMessage = '';

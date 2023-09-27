@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt'); // Importe a biblioteca 'bcrypt' para lidar co
 
 const authenticator = (req, res, username, password, users, usersFilePath) => {
 // Verifique as credenciais em relação aos dados em users.json
-    const user = users.find(u => u.author_user === username);
+    const user = users.find(u => u.author_user === username && u.author_status === 'on');
     if (user && bcrypt.compareSync(password, user.author_pwd)) {
         
         fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), 'utf-8');
