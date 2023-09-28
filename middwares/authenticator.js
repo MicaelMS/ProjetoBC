@@ -43,16 +43,15 @@ const authenticator = (req, res, next) => {
         res.render('login', { error: 'Credenciais inválidas' });
     }
 }
-
 const verificacao = (req, res, next) => {
-    // Verifique se o usuário está autenticado, por exemplo, com base em uma variável de sessão
-    const isAuth = req.session.author_level === 'admin';
-    if (!isAuth) {
+    if (req.session.user) {
+        // O usuário está autenticado, prossiga para a próxima rota
         next();
-        res.redirect('/admin');  
+    } else {
+        // O usuário não está autenticado, redirecione para a página de login
+        res.redirect('/login');
     }
-    
-  };
+};
 // const  = (req, res, next) => {
 //     if (req.session.user) {
 //         // O usuário está autenticado, prossiga para a próxima rota
@@ -66,6 +65,7 @@ const verificacao = (req, res, next) => {
 // };
 
 const logout = (req, res) => {
+    console.log('deslogou');
     // Destrua a sessão do usuário (logout)
     req.session.destroy(err => {
         if (err) {

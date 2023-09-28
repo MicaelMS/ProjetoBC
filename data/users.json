@@ -79,5 +79,14 @@
     "author_pwd": "$2b$10$Qd4kHymUvNDTV8ZXtoW0d.f/3b/O6r004j.a3kVWMpPcYh.nSMVHe",
     "author_level": "standard",
     "author_status": "on"
+  },
+  {
+    "author_id": "803094ce-62db-4e18-b1cf-fff8476dc9be",
+    "author_name": "Teste",
+    "author_email": "teste@gmail.com",
+    "author_user": "Teste",
+    "author_pwd": "$2b$10$Hh0txaRr59oriURGNYbBdumRxHM1K4ktayfbbYqzBUTD3Cbfy1Tp6",
+    "author_level": "standard",
+    "author_status": "on"
   }
 ]
