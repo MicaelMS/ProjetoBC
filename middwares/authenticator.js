@@ -35,22 +35,35 @@ const authenticator = (req, res, next) => {
     if (user && bcrypt.compareSync(password, user.author_pwd)) {
         req.session.user = {
             username: user.author_user,
+            access_level: user.author_level,
         };
         res.redirect('/admin');
     } else {
+        console.log("AQUI MISAEL para  login");
         res.render('login', { error: 'Credenciais inválidas' });
     }
 }
 
 const verificacao = (req, res, next) => {
-    if (req.session.user) {
-        // O usuário está autenticado, prossiga para a próxima rota
+    // Verifique se o usuário está autenticado, por exemplo, com base em uma variável de sessão
+    const isAuth = req.session.author_level === 'admin';
+    if (!isAuth) {
         next();
-    } else {
-        // O usuário não está autenticado, redirecione para a página de login
-        res.redirect('/login');
+        res.redirect('/admin');  
     }
-};
+    
+  };
+// const  = (req, res, next) => {
+//     if (req.session.user) {
+//         // O usuário está autenticado, prossiga para a próxima rota
+//         next();
+//         console.log("AQUI SO ADMIN PODE EDITAR");
+//     } else {
+//         console.log("AQUI MISAEL PARA verificar");
+//         // O usuário não está autenticado, redirecione para a página de login
+//         res.redirect('/login');
+//     }
+// };
 
 const logout = (req, res) => {
     // Destrua a sessão do usuário (logout)
@@ -61,4 +74,14 @@ const logout = (req, res) => {
     });
 };
 
-module.exports = { authenticator, verificacao, logout };
+function checkAdminLevel(req, res, next) {
+    if (req.session.user && req.session.user.author_level === 'admin') {
+      // O usuário é um administrador, continue para a próxima rota
+    next();
+    return res.redirect('/admin');  
+    }
+    // O usuário não é um administrador, redirecione ou retorne um erro
+    res.status(403).send('Acesso negado');
+  }
+
+module.exports = { authenticator, verificacao, logout, checkAdminLevel };
