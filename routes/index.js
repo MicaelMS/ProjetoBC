@@ -5,7 +5,7 @@ const app = express();
 const ejs = require('ejs');
 const path = require('path');
 const fs = require('fs');
-const artcilesModule= require('./articles');
+const artcilesModule = require('./articles');
 const usersRouter = require('./users');
 const adminRouter = require('./admin');
 const loginRouter = require('./login');
@@ -23,7 +23,7 @@ app.use(session({
     secret: 'chave',
     resave: false,
     saveUninitialized: false,
-  }));
+}));
 
 // Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
 app.get('/', function (req, res) {
@@ -50,7 +50,7 @@ app.get('/filter', function (req, res) {
 //     res.render("users_edit");
 // });
 
-app.get('/', function (req, res) {
+app.get('/', authenticator.deslogar, (req, res) => {
     const user = req.session.user;
     res.render('index', { user });
 });

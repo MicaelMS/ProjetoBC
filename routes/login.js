@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 const adminRouter = require('./admin');
-const authenticator = require('../middwares/authenticator');
+const {authenticator} = require('../middwares/authenticator');
 
 // Configurar EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
@@ -24,11 +24,12 @@ router.get('/login', (req, res) => {
 });
 
 // Rota para lidar com o envio do formulário de login
-router.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+router.post('/login', authenticator, (req, res) => {
+    // const username = req.body.username;
+    // const password = req.body.password;
 
-    authenticator.authenticator(req, res, username, password, users, usersFilePath);
+    res.redirect('/admin');
+    // authenticator.authenticator(req, res, username, password, users, usersFilePath);
 });
 
 app.use(adminRouter);

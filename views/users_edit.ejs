@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
+
 <body>
-    
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justi   tent-between">
         <div class="container">
             <a class="navbar-brand text-light" href="/admin">Voltar a tela de admin</a>
@@ -23,21 +25,25 @@
                             <form action="/editar-usuario" method="POST">
                                 <input type="hidden" value="<%= author_id %>" name="author_id">
                                 <div class="form-group">
-                                <label for="author_name">Nome:</label>
-                                <input type="text" id="author_name" value="<%= author_name %>" name="author_name"  class="form-control" required><br>
+                                    <label for="author_name">Nome:</label>
+                                    <input type="text" id="author_name" value="<%= author_name %>" name="author_name"
+                                        class="form-control" required><br>
                                 </div>
 
                                 <div class="form-group">
-                                <label for="author_email">Email:</label>
-                                <input type="email" id="author_email" value="<%= author_email %>" name="author_email"  class="form-control" required><br>
+                                    <label for="author_email">Email:</label>
+                                    <input type="email" id="author_email" value="<%= author_email %>"
+                                        name="author_email" class="form-control" required><br>
                                 </div>
                                 <div class="form-group">
-                                <label for="author_user">Usuário:</label>
-                                <input type="text" id="author_user" value="<%= author_user %>" name="author_user"  class="form-control" required><br>
+                                    <label for="author_user">Usuário:</label>
+                                    <input type="text" id="author_user" value="<%= author_user %>" name="author_user"
+                                        class="form-control" required><br>
                                 </div>
                                 <label for="author_pwd">Senha:</label>
-                                <input type="password" id="author_pwd" name="author_pwd"  class="form-control" required><br>
-                                <button type="submit"  class="form-control btn btn-primary btn-block">Salvar</button>
+                                <input type="password" id="author_pwd" name="author_pwd" class="form-control"
+                                    required><br>
+                                <button type="submit" class="form-control btn btn-primary btn-block">Salvar</button>
                                 <input type="hidden" value="<%= author_level %>" name="author_level">
                                 <input type="hidden" value="<%= author_status %>" name="author_status">
                             </form>
@@ -49,4 +55,5 @@
     </div>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

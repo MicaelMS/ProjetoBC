@@ -5,6 +5,13 @@ const fs = require('fs');
 const path = require('path');
 const usersRouter = require('./users')
 
+const session = require('express-session');
+app.use(session({
+    secret: 'chave',
+    resave: false,
+    saveUninitialized: false,
+}));
+
 const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
 const usersJSON = fs.readFileSync(usersFilePath, 'utf8');
 const users = JSON.parse(usersJSON);
@@ -12,13 +19,15 @@ const articlesFilePath = path.join(__dirname, '..', 'data', 'articles.json');
 const articlesJSON = fs.readFileSync(articlesFilePath, 'utf8');
 const articles = JSON.parse(articlesJSON);
 const { loadArticles } = require('./articles'); // Importe a função loadArticles do arquivo articles.js
-const {loadUsers} = require('./users');
-const { checkAdminLevel } = require('../middwares/authenticator');
+const { loadUsers } = require('./users');
+const { verificacao, checkAdminLevel } = require('../middwares/authenticator');
 
 let usuarios = [];
 let artigos = [];
+let successMessage = '';
+let errorMessage = '';
 
-router.get('/admin', (req, res) => {
+router.get('/admin', verificacao, (req, res) => {
   const articlesFilter = articles.filter(article => article.kb_published == 'on');
   const usersFilter = users.filter(user => user.author_status == 'on');
 
@@ -57,17 +66,17 @@ router.post('/excluir-usuario', (req, res) => {
   res.redirect('/admin');
 });
 
-// Rota para a página admin
-router.get('/admin', (req, res) => {
-  // Passe a mensagem de sucesso para a página admin e depois limpe a variável
-  const message = successMessage;
-  successMessage = ''; // Limpe a mensagem
+// // Rota para a página admin
+// router.get('/admin', verificacao, (req, res) => {
+//   // Passe a mensagem de sucesso para a página admin e depois limpe a variável
+//   const message = successMessage;
+//   successMessage = ''; // Limpe a mensagem
 
-  const articlesFilter = articles.filter(article => article.kb_published == 'on');
-  const usersFilter = users.filter(user => user.author_status == 'on');
+//   const articlesFilter = articles.filter(article => article.kb_published == 'on');
+//   const usersFilter = users.filter(user => user.author_status == 'on');
 
-  res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage: message });
-});
+//   res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage: message });
+// });
 
 app.get('/cadastro_usuario', (req, res) => {
   res.render("users_create");

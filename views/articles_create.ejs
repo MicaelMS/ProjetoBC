@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Artigo</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
@@ -19,28 +21,28 @@
 
     <div class="container mt-5">
         <h1>Formulário de Artigo</h1>
-    
+
         <form action="/criar-artigo" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="kb_title">Título:</label>
                 <input type="text" id="kb_title" name="kb_title" class="form-control">
             </div>
-    
+
             <div class="form-group">
                 <label for="kb_body">Corpo do Artigo:</label>
                 <textarea id="kb_body" name="kb_body" rows="10" class="form-control"></textarea>
             </div>
-    
+
             <div class="form-group">
                 <label for="kb_permalink">Permalink:</label>
                 <input type="text" id="kb_permalink" name="kb_permalink" class="form-control">
             </div>
-    
+
             <div class="form-group">
                 <label for="kb_keywords">Palavras-chave:</label>
                 <input type="text" id="kb_keywords" name="kb_keywords" class="form-control">
             </div>
-    
+
             <div class="form-group">
                 <label for="kb_author_email">Email do Autor:</label>
                 <input type="text" id="kb_author_email" name="kb_author_email" class="form-control">
@@ -49,11 +51,12 @@
                 <label for="kb_image">Imagem do Artigo:</label>
                 <input type="file" id="kb_image" name="kb_image" class="form-control">
             </div>
-            
-    
+
+
             <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Enviar</button>
         </form>
     </div>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
