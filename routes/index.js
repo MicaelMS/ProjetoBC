@@ -26,7 +26,11 @@ app.use(session({
 }));
 
 // Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
+    console.log(req.session);
+    if (req.session.user){
+        authenticator.logout(req,res);
+    }
     artcilesModule.sendArticles(req, res);
 });
 
@@ -34,23 +38,7 @@ app.get('/filter', function (req, res) {
     artcilesModule.sendArticlesKey(req, res);
 });
 
-// app.get('/cadastra_artigo', authenticator.verificacao, (req, res) => {
-//     res.render("articles_create");
-// });
-
-// app.get('/edita_artigo', authenticator.verificacao, (req, res) => {
-//     res.render("articles_edit");
-// });
-
-// app.get('/cadastro_usuario', authenticator.verificacao, (req, res) => {
-//     res.render("users_create");
-// });
-
-// app.get('/edita_usuario', authenticator.verificacao, (req, res) => {
-//     res.render("users_edit");
-// });
-
-app.get('/', authenticator.deslogar, (req, res) => {
+app.get('/', authenticator.logout, (req, res) => {
     const user = req.session.user;
     res.render('index', { user });
 });

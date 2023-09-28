@@ -31,6 +31,7 @@ router.get('/admin', verificacao, (req, res) => {
   const articlesFilter = articles.filter(article => article.kb_published == 'on');
   const usersFilter = users.filter(user => user.author_status == 'on');
 
+  console.log('rtsada');
   // Passe essas variáveis para a página admin e depois limpe-as
   res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage, errorMessage });
   // Limpe as variáveis após renderizar a página
@@ -66,17 +67,17 @@ router.post('/excluir-usuario', (req, res) => {
   res.redirect('/admin');
 });
 
-// // Rota para a página admin
-// router.get('/admin', verificacao, (req, res) => {
-//   // Passe a mensagem de sucesso para a página admin e depois limpe a variável
-//   const message = successMessage;
-//   successMessage = ''; // Limpe a mensagem
+// Rota para a página admin
+router.get('/admin', verificacao, (req, res) => {
+  // Passe a mensagem de sucesso para a página admin e depois limpe a variável
+  const message = successMessage;
+  successMessage = ''; // Limpe a mensagem
 
-//   const articlesFilter = articles.filter(article => article.kb_published == 'on');
-//   const usersFilter = users.filter(user => user.author_status == 'on');
+  const articlesFilter = articles.filter(article => article.kb_published == 'on');
+  const usersFilter = users.filter(user => user.author_status == 'on');
 
-//   res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage: message });
-// });
+  res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage: message });
+});
 
 app.get('/cadastro_usuario', (req, res) => {
   res.render("users_create");

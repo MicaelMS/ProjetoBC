@@ -52,14 +52,13 @@ const verificacao = (req, res, next) => {
     }
 };
 
-const deslogar = (req, res) => {
+const logout = (req, res) => {
     // Destrua a sessão do usuário (logout)
     req.session.destroy(err => {
         if (err) {
             console.error('Erro ao encerrar a sessão:', err);
         }
-        res.redirect('/');
     });
 };
 
-module.exports = { authenticator, verificacao, deslogar };
+module.exports = { authenticator, verificacao, logout };
