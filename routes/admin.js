@@ -31,7 +31,6 @@ router.get('/admin', verificacao, (req, res) => {
   const articlesFilter = articles.filter(article => article.kb_published == 'on');
   const usersFilter = users.filter(user => user.author_status == 'on');
 
-  console.log('rtsada');
   // Passe essas variáveis para a página admin e depois limpe-as
   res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage, errorMessage });
   // Limpe as variáveis após renderizar a página

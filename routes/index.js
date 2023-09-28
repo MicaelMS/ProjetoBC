@@ -27,7 +27,6 @@ app.use(session({
 
 // Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
 app.get('/', (req, res) => {
-    console.log(req.session);
     if (req.session.user){
         authenticator.logout(req,res);
     }
