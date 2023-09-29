@@ -37,13 +37,15 @@ const authenticator = (req, res, next) => {
             username: user.author_user,
             access_level: user.author_level,
         };
-        res.redirect('/admin');
+        next();
+        // res.redirect('/admin');
     } else {
         console.log("AQUI MISAEL para  login");
         res.render('login', { error: 'Credenciais inválidas' });
     }
 }
 const verificacao = (req, res, next) => {
+    console.log(req.session);
     if (req.session.user) {
         // O usuário está autenticado, prossiga para a próxima rota
         next();
@@ -52,25 +54,15 @@ const verificacao = (req, res, next) => {
         res.redirect('/login');
     }
 };
-// const  = (req, res, next) => {
-//     if (req.session.user) {
-//         // O usuário está autenticado, prossiga para a próxima rota
-//         next();
-//         console.log("AQUI SO ADMIN PODE EDITAR");
-//     } else {
-//         console.log("AQUI MISAEL PARA verificar");
-//         // O usuário não está autenticado, redirecione para a página de login
-//         res.redirect('/login');
-//     }
-// };
 
-const logout = (req, res) => {
+const logout = (req, res, next) => {
     console.log('deslogou');
     // Destrua a sessão do usuário (logout)
     req.session.destroy(err => {
         if (err) {
             console.error('Erro ao encerrar a sessão:', err);
         }
+        next();
     });
 };
 

@@ -26,11 +26,8 @@ app.use(session({
 }));
 
 // Rota para renderizar o arquivo index.ejs com os artigos mais curtidos
-app.get('/', (req, res) => {
+app.get('/', authenticator.logout,(req, res) => {
     console.log(req.session);
-    if (req.session.user){
-        authenticator.logout(req,res);
-    }
     artcilesModule.sendArticles(req, res);
 });
 
@@ -38,10 +35,7 @@ app.get('/filter', function (req, res) {
     artcilesModule.sendArticlesKey(req, res);
 });
 
-app.get('/', (req, res) => {
-    if (req.session.user){
-        authenticator.logout(req,res);
-    }
+app.get('/', authenticator.logout, (req, res) => {
     const user = req.session.user;
     console.log(user);
     res.render('index', { user });

@@ -97,17 +97,6 @@ router.post('/curtido', (req, res) => {
   liked_counter.curtir(req, res);
 });
 
-// function updateArticleStatus(articleTitle, newStatus) {
-//     const articlesData = loadArticles();
-//     const index = articlesData.findIndex(article => article.kb_title === articleTitle);
-//     if (index !== -1) {
-//         articlesData[index].kb_featured = newStatus; // Atualize o status do artigo
-//         fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2), 'utf8');
-//         successMessage = 'Artigo atualizado com sucesso!'; // Defina a mensagem de sucesso
-//     } else {
-//         errorMessage = 'Artigo não encontrado.'; // Defina a mensagem de erro
-//     }
-//   }
 router.get('/admin', verificacao, (req, res) => {
   // Passe as mensagens de sucesso e erro para a página admin e depois limpe-as
   const articlesFilter = articles.filter(article => article.kb_published == 'on');
@@ -219,7 +208,7 @@ router.post('/edita-artigo', (req, res) => {
       ...articles[editedArticleIndex],
       kb_title: req.body.kb_title,
       kb_body: req.body.kb_body,
-      kb_permalink: req.body.permalink,
+      kb_permalink: req.body.kb_permalink,
       kb_keywords: req.body.kb_keywords,
       kb_author_email: req.body.kb_author_email,
       kb_published_date: req.body.kb_published_date,

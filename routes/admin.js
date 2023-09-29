@@ -38,18 +38,6 @@ router.get('/admin', verificacao, (req, res) => {
   errorMessage = '';
 });
 
-// // Rota para a página admin
-// router.get('/admin', verificacao, (req, res) => {
-//   // Passe a mensagem de sucesso para a página admin e depois limpe a variável
-//   const message = successMessage;
-//   successMessage = ''; // Limpe a mensagem
-
-//   const articlesFilter = articles.filter(article => article.kb_published == 'on');
-//   const usersFilter = users.filter(user => user.author_status == 'on');
-
-//   res.render('admin', { users: usersFilter, articles: articlesFilter, successMessage: message });
-// });
-
 function updateUserStatus(userId, newStatus) {
   const usersData = loadUsers();
   const user = usersData.find(user => user.author_id === userId);

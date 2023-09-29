@@ -6,7 +6,8 @@
     "author_user": "andre.ruaro",
     "author_pwd": "$2b$10$yYcDvStFfqB0FKY0kWLkuOAUGZ615HldJNBCNM9cvA4GBw0neN3e6",
     "author_level": "standard",
-    "author_status": "on"
+    "author_status": "on",
+    "_locals": {}
   },
   {
     "author_id": "eb619630-4293-4abd-ae12-9dc7859a1d2b",
@@ -86,6 +87,15 @@
     "author_email": "teste@gmail.com",
     "author_user": "Teste",
     "author_pwd": "$2b$10$Hh0txaRr59oriURGNYbBdumRxHM1K4ktayfbbYqzBUTD3Cbfy1Tp6",
+    "author_level": "standard",
+    "author_status": "on"
+  },
+  {
+    "author_id": "c131d220-6721-4918-a285-8cfd6fa0453a",
+    "author_name": "Teste123",
+    "author_email": "Teste@gmail.com",
+    "author_user": "Teste123",
+    "author_pwd": "$2b$10$iCxmzenRmkVe4bYbA9bWPuqkhEn52E.OmwRd39bQDSrOxfDrV3hF6",
     "author_level": "standard",
     "author_status": "on"
   }
